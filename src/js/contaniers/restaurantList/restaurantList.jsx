@@ -1,43 +1,41 @@
 /* eslint-disable react/destructuring-assignment */
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import './style.css';
 import defaultStyle from './styles';
 
-class RestaurantList extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = ({
-      restaurants: [],
-      cities: [],
-      city: 'toronto'
-    });
-  }
+const RestaurantList = (props) => {
+  const [restaurants, setRestaurants] = useState([]);
+  const [citiesList, setCities] = useState([]);
+  const [city, setCitySelected] = useState('toronto');
 
-
-  componentDidMount() {
-    const { fetchRestaurantList, fetchCities } = this.props;
+  useEffect(() => {
+    const { fetchRestaurantList, fetchCities } = props;
     if (fetchCities) {
       fetchCities();
     }
     if (fetchRestaurantList) {
-      fetchRestaurantList(this.state.city);
+      fetchRestaurantList(city);
     }
-  }
+  }, []);
 
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      cities: nextProps.cities
-    });
-    if (nextProps.data !== undefined || this.props.data !== nextProps.data) {
-      this.setState({
-        restaurants: nextProps.data
-      });
+
+  useEffect(() => {
+    if (props.cities !== undefined) {
+      setCities(props.cities);
     }
-  }
+  }, [props.cities]);
 
-  handleRefineSearch = (evt) => {
-    const allRestaurantList = [...this.props.data];
+
+  useEffect(() => {
+    if (props.data !== undefined) {
+      setRestaurants(props.data);
+    }
+  }, [props.data]);
+
+
+  const handleRefineSearch = (evt) => {
+    const allRestaurantList = [...props.data];
     let modifiedRestaurantList = [];
     const searchValue = evt.target.value;
     if (searchValue) {
@@ -49,120 +47,112 @@ class RestaurantList extends React.Component {
     } else {
       modifiedRestaurantList = allRestaurantList;
     }
-    this.setState({
-      restaurants: modifiedRestaurantList
-    });
-  }
+    setRestaurants(modifiedRestaurantList);
+  };
 
 
-  onFilterByCity = (evt) => {
-    this.setState({
-      city: evt.target.value
-    });
-    this.props.fetchRestaurantList(evt.target.value);
-  }
+  const onFilterByCity = (evt) => {
+    setCitySelected(evt.target.value);
+    props.fetchRestaurantList(evt.target.value);
+  };
 
-  handleSearchCity = (evt) => {
-    const { cities } = this.props;
+  const handleSearchCity = (evt) => {
+    const { cities } = props;
     const searchValue = evt.target.value;
     const modifiedCityList = cities.filter(item => item.toLowerCase().includes(searchValue.toLowerCase()));
-    this.setState({
-      cities: modifiedCityList
-    });
-  }
+    setCities(modifiedCityList);
+  };
 
-  render() {
-    return (
-      <React.Fragment>
-        <div style={defaultStyle.rootStyle}>
-          <div style={defaultStyle.leftNavStyle}>
-            <h4 style={defaultStyle.headerStyle}>
-              <img
-                src="https://careers.just-eat.com/assets/images/icons/search.png"
-                style={defaultStyle.imageStyle}
-                alt=""
+  return (
+    <React.Fragment>
+      <div style={defaultStyle.rootStyle}>
+        <div style={defaultStyle.leftNavStyle}>
+          <h4 style={defaultStyle.headerStyle}>
+            <img
+              src="https://careers.just-eat.com/assets/images/icons/search.png"
+              style={defaultStyle.imageStyle}
+              alt=""
+            />
+            <span style={{ color: '#5b616b' }}>Refine</span>
+            <label htmlFor="querySearch">
+              <input
+                type="text"
+                id="querySearch"
+                onChange={handleRefineSearch}
+                style={{ width: '95%' }}
               />
-              <span style={{ color: '#5b616b' }}>Refine</span>
-              <label htmlFor="querySearch">
-                <input
-                  type="text"
-                  id="querySearch"
-                  onChange={this.handleRefineSearch}
-                  style={{ width: '95%' }}
-                />
-              </label>
-            </h4>
+            </label>
+          </h4>
 
-            <h4 style={defaultStyle.headerStyle}>
-              City Selected:
-              <span style={defaultStyle.textStyle}>{this.state.city}</span>
-              <label htmlFor="search-city">
+          <h4 style={defaultStyle.headerStyle}>
+            City Selected:
+            <span style={defaultStyle.textStyle}>{city}</span>
+            <label htmlFor="search-city">
+              <input
+                type="text"
+                id="search-city"
+                onChange={handleSearchCity}
+                style={{ width: '95%' }}
+              />
+            </label>
+          </h4>
+          <div style={defaultStyle.optionListStyle}>
+            {citiesList && citiesList.map(cityValue => (
+              <div>
                 <input
-                  type="text"
-                  id="search-city"
-                  onChange={this.handleSearchCity}
-                  style={{ width: '95%' }}
+                  type="radio"
+                  name="city"
+                  value={cityValue}
+                  onChange={onFilterByCity}
                 />
-              </label>
-            </h4>
-            <div style={defaultStyle.optionListStyle}>
-              {this.state.cities && this.state.cities.map(city => (
-                <div>
-                  <input
-                    type="radio"
-                    name="city"
-                    value={city}
-                    onChange={this.onFilterByCity}
-                  />
-                  <span style={defaultStyle.optionStyle}>{city}</span>
-                </div>
-              ))
-              }
-            </div>
+                <span style={defaultStyle.optionStyle}>{cityValue}</span>
+              </div>
+            ))
+            }
+          </div>
 
-          </div>
-          <div style={defaultStyle.rightDivStyle}>
-            <table style={defaultStyle.tableStyle}>
-              <tr style={defaultStyle.tableHeaderStyle}>
-                <th>Name</th>
-                <th>Area</th>
-                <th>Address</th>
-                <th>Phone</th>
-                <th>Photo</th>
-              </tr>
-              {this.state.restaurants.length > 0
-                ? this.state.restaurants.map(item => (
-                  <tr
-                    key={`${item.name}_${item.department}`}
-                    style={{ border: '1px solid' }}
-                  >
-                    <td align="center" style={defaultStyle.rowStyle}>
-                      <font color="#326DEA">
-                        {item.name}
-                      </font>
-                    </td>
-                    <td align="center">
-                      {item.area}
-                    </td>
-                    <td align="center">
-                      {item.address}
-                    </td>
-                    <td align="center">
-                      {item.phone}
-                    </td>
-                    <td align="center">
-                      <img src={item.image_url} alt={item.name} />
-                    </td>
-                  </tr>
-                ))
-                : <div>Loading data...</div>}
-            </table>
-          </div>
         </div>
-      </React.Fragment>
-    );
-  }
-}
+        <div style={defaultStyle.rightDivStyle}>
+          <table style={defaultStyle.tableStyle}>
+            <tr style={defaultStyle.tableHeaderStyle}>
+              <th>Name</th>
+              <th>Area</th>
+              <th>Address</th>
+              <th>Phone</th>
+              <th>Photo</th>
+            </tr>
+            {restaurants.length > 0
+              ? restaurants.map(item => (
+                <tr
+                  key={`${item.name}_${item.department}`}
+                  style={{ border: '1px solid' }}
+                >
+                  <td align="center" style={defaultStyle.rowStyle}>
+                    <font color="#326DEA">
+                      {item.name}
+                    </font>
+                  </td>
+                  <td align="center">
+                    {item.area}
+                  </td>
+                  <td align="center">
+                    {item.address}
+                  </td>
+                  <td align="center">
+                    {item.phone}
+                  </td>
+                  <td align="center">
+                    <img src={item.image_url} alt={item.name} />
+                  </td>
+                </tr>
+              ))
+              : <div>Loading data...</div>}
+          </table>
+        </div>
+      </div>
+    </React.Fragment>
+  );
+};
 
 RestaurantList.propTypes = {
   data: PropTypes.shape({}),
