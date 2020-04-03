@@ -1,0 +1,79 @@
+{
+  "name": "restaurant-tracker",
+  "version": "1.0.0",
+  "description": "react-redux-saga restaurant-tracker with webpack",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "serve": "webpack-dev-server",
+    "storybook": "start-storybook",
+    "eslint": "eslint \"src/**/*.js\" \"src/**/*.jsx\"",
+    "build": "webpack --mode production --env development src/js/app.jsx --optimize-minimize"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anjana-jose/restaurant-management.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/anjana-jose/restaurant-management/issues"
+  },
+  "homepage": "https://github.com/anjana-jose/restaurant-management#readme",
+  "devDependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/plugin-proposal-class-properties": "^7.1.0",
+    "@babel/preset-env": "^7.4.5",
+    "@babel/preset-react": "^7.0.0",
+    "@storybook/react": "^5.1.3",
+    "babel-loader": "^8.0.6",
+    "redux-devtools": "^3.5.0",
+    "webpack": "^4.35.0",
+    "webpack-cli": "^3.3.2",
+    "eslint": "^5.12.0",
+    "identity-obj-proxy": "^3.0.0",
+    "eslint-config-airbnb": "^17.1.0",
+    "eslint-plugin-react": "^7.4.0",
+    "eslint-html-reporter": "^0.5.2",
+    "eslint-json": "^2.0.0",
+    "eslint-plugin-import": "^2.8.0",
+    "eslint-plugin-jsx-a11y": "^6.0.2",
+    "babel-eslint": "^10.0.1",
+    "enzyme": "^3.10.0",
+    "babel-jest": "^24.8.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.3.5",
+    "jest": "^24.8.0"
+  },
+  "jest": {
+    "moduleNameMapper": {
+      "\\.(css|less)$": "identity-obj-proxy"
+    },
+    "collectCoverageFrom": [
+      "src/js/**/*.{js,jsx}",
+      "tests/**/*.{js,jsx}",
+      "!tests/mocked/*.{js,jsx}",
+      "!tests/cucumber/**/*",
+      "!tests/mocked/**/*",
+      "!src/js/**/*.story*{js,jsx}"
+    ]
+  },
+  "dependencies": {
+    "babel-polyfill": "^6.26.0",
+    "css-loader": "^2.1.1",
+    "html-webpack-plugin": "^3.2.0",
+    "immutable": "^4.0.0-rc.12",
+    "prop-types": "^15.7.2",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-redux": "^7.1.0",
+    "react-router-dom": "4.3.1",
+    "react-test-renderer": "^16.8.6",
+    "redux": "^4.0.1",
+    "redux-logger": "^3.0.6",
+    "redux-saga": "0.16.2",
+    "seamless-immutable": "7.1.4",
+    "style-loader": "^0.23.1",
+    "webpack-dev-server": "^3.6.0"
+  }
+}
