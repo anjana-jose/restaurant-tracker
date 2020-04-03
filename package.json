@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "test": "jest",
-    "serve": "webpack-dev-server",
+    "start": "webpack-dev-server",
     "storybook": "start-storybook",
     "eslint": "eslint \"src/**/*.js\" \"src/**/*.jsx\"",
     "build": "webpack --mode production --env development src/js/app.jsx --optimize-minimize"
