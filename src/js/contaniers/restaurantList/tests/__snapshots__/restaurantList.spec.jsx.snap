@@ -1,0 +1,356 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`containers/restaurantList With out url and user id 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "height": "calc(100% - 60px)",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "marginLeft": "10px",
+        "width": "15%",
+      }
+    }
+  >
+    <h4
+      style={
+        Object {
+          "color": "#5b616b",
+          "marginBottom": "5px",
+        }
+      }
+    >
+      <img
+        alt=""
+        src="https://careers.just-eat.com/assets/images/icons/search.png"
+        style={
+          Object {
+            "height": "14px",
+            "marginRight": "6px",
+            "marginTop": "2px",
+          }
+        }
+      />
+      <span
+        style={
+          Object {
+            "color": "#5b616b",
+          }
+        }
+      >
+        Refine
+      </span>
+      <label
+        htmlFor="querySearch"
+      >
+        <input
+          id="querySearch"
+          onChange={[Function]}
+          style={
+            Object {
+              "width": "95%",
+            }
+          }
+          type="text"
+        />
+      </label>
+    </h4>
+    <h4
+      style={
+        Object {
+          "color": "#5b616b",
+          "marginBottom": "5px",
+        }
+      }
+    >
+      City Selected:
+      <span
+        style={
+          Object {
+            "color": "#5b616b",
+            "marginLeft": "5px",
+            "textTransform": "capitalize",
+          }
+        }
+      >
+        toronto
+      </span>
+      <label
+        htmlFor="search-city"
+      >
+        <input
+          id="search-city"
+          onChange={[Function]}
+          style={
+            Object {
+              "width": "95%",
+            }
+          }
+          type="text"
+        />
+      </label>
+    </h4>
+    <div
+      style={
+        Object {
+          "height": "calc(100% - 130px",
+          "overflow": "auto",
+        }
+      }
+    >
+      <div>
+        <input
+          id="radio-button"
+          name="city"
+          onChange={[Function]}
+          type="radio"
+          value="toronto"
+        />
+        <span
+          style={
+            Object {
+              "color": "#5b616b",
+              "fontSize": "16px",
+              "fontWeight": "normal",
+            }
+          }
+        >
+          toronto
+        </span>
+      </div>
+      <div>
+        <input
+          id="radio-button"
+          name="city"
+          onChange={[Function]}
+          type="radio"
+          value="Mississauga"
+        />
+        <span
+          style={
+            Object {
+              "color": "#5b616b",
+              "fontSize": "16px",
+              "fontWeight": "normal",
+            }
+          }
+        >
+          Mississauga
+        </span>
+      </div>
+    </div>
+  </div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "overflow": "auto",
+        "width": "85%",
+      }
+    }
+  >
+    <table
+      style={
+        Object {
+          "border": "1px solid",
+          "width": "100%",
+        }
+      }
+    >
+      <tr
+        style={
+          Object {
+            "backgroundColor": "#112e51",
+            "border": "1px solid",
+            "color": "#ffffff",
+            "height": 50,
+          }
+        }
+      >
+        <th>
+          Name
+        </th>
+        <th>
+          Area
+        </th>
+        <th>
+          Address
+        </th>
+        <th>
+          Phone
+        </th>
+        <th>
+          Photo
+        </th>
+      </tr>
+      <div>
+        Loading data...
+      </div>
+    </table>
+  </div>
+</div>
+`;
+
+exports[`containers/restaurantList without data and cities 1`] = `
+<div
+  style={
+    Object {
+      "display": "flex",
+      "height": "calc(100% - 60px)",
+      "width": "100%",
+    }
+  }
+>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "marginLeft": "10px",
+        "width": "15%",
+      }
+    }
+  >
+    <h4
+      style={
+        Object {
+          "color": "#5b616b",
+          "marginBottom": "5px",
+        }
+      }
+    >
+      <img
+        alt=""
+        src="https://careers.just-eat.com/assets/images/icons/search.png"
+        style={
+          Object {
+            "height": "14px",
+            "marginRight": "6px",
+            "marginTop": "2px",
+          }
+        }
+      />
+      <span
+        style={
+          Object {
+            "color": "#5b616b",
+          }
+        }
+      >
+        Refine
+      </span>
+      <label
+        htmlFor="querySearch"
+      >
+        <input
+          id="querySearch"
+          onChange={[Function]}
+          style={
+            Object {
+              "width": "95%",
+            }
+          }
+          type="text"
+        />
+      </label>
+    </h4>
+    <h4
+      style={
+        Object {
+          "color": "#5b616b",
+          "marginBottom": "5px",
+        }
+      }
+    >
+      City Selected:
+      <span
+        style={
+          Object {
+            "color": "#5b616b",
+            "marginLeft": "5px",
+            "textTransform": "capitalize",
+          }
+        }
+      >
+        toronto
+      </span>
+      <label
+        htmlFor="search-city"
+      >
+        <input
+          id="search-city"
+          onChange={[Function]}
+          style={
+            Object {
+              "width": "95%",
+            }
+          }
+          type="text"
+        />
+      </label>
+    </h4>
+    <div
+      style={
+        Object {
+          "height": "calc(100% - 130px",
+          "overflow": "auto",
+        }
+      }
+    />
+  </div>
+  <div
+    style={
+      Object {
+        "height": "100%",
+        "overflow": "auto",
+        "width": "85%",
+      }
+    }
+  >
+    <table
+      style={
+        Object {
+          "border": "1px solid",
+          "width": "100%",
+        }
+      }
+    >
+      <tr
+        style={
+          Object {
+            "backgroundColor": "#112e51",
+            "border": "1px solid",
+            "color": "#ffffff",
+            "height": 50,
+          }
+        }
+      >
+        <th>
+          Name
+        </th>
+        <th>
+          Area
+        </th>
+        <th>
+          Address
+        </th>
+        <th>
+          Phone
+        </th>
+        <th>
+          Photo
+        </th>
+      </tr>
+      <div>
+        Loading data...
+      </div>
+    </table>
+  </div>
+</div>
+`;

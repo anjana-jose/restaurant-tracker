@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import './style.css';
 import defaultStyle from './styles';
 
-const RestaurantList = (props) => {
+export const RestaurantList = (props) => {
   const [restaurants, setRestaurants] = useState([]);
   const [citiesList, setCities] = useState([]);
   const [city, setCitySelected] = useState('toronto');
@@ -98,8 +98,9 @@ const RestaurantList = (props) => {
           </h4>
           <div style={defaultStyle.optionListStyle}>
             {citiesList && citiesList.map(cityValue => (
-              <div>
+              <div key={cityValue}>
                 <input
+                  id="radio-button"
                   type="radio"
                   name="city"
                   value={cityValue}
@@ -158,13 +159,11 @@ RestaurantList.propTypes = {
   data: PropTypes.shape({}),
   fetchRestaurantList: PropTypes.func,
   fetchCities: PropTypes.func,
-  cities: PropTypes.shape({
-    filter: e => e
-  })
+  cities: PropTypes.arrayOf(PropTypes.string)
 };
 
 RestaurantList.defaultProps = {
-  data: [],
+  data: {},
   fetchRestaurantList: e => e,
   fetchCities: e => e,
   cities: []
