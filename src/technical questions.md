@@ -14,8 +14,14 @@
     }, [props.cities]);
 
 3. How would you track down a performance issue in production? Have you ever had to do this?
+    I have encountered a situation where the page was taking more than a minute to load which had a large form with several fields in production. Happened when the form has got lots o fields with prepolulated lists. 
+
+    Analysed the rendering pattern with a profiler and checked the re-renderings happening within each component. And I have used shouldComponentUpdate to make sure unnecessary renderings are not happeing. Also wrapped the component using React.memo to memoize the component.
 
 4. How would you improve the API that you just used?
+
+    The current API is not paginated and works only with a search parameter. It would have been nice if the API is paginated and works even without a filter associated with it.
+
 5. Please describe yourself using JSON.
 
     {
